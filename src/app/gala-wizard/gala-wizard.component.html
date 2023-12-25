@@ -138,13 +138,19 @@
         <cdk-step label="Resumen">
           <app-gala-step-layout>
             <ng-container title>Resumen de tu predicción</ng-container>
-            <div>
-            <p>aqui metemos el resumen bonito cuando este</p>
+            <div #screen>
+              <div class="m-10">
+                <h1>Hey!</h1>
+                <p>some content</p>
+                <h1>Hey!</h1>
+                <br>
+              </div>
             </div>
             <ng-container button>
               <button
                 class="btn btn-primary w-full"
                 type="button"
+                (click)="download()"
               >Descargar resumen
               </button>
             </ng-container>

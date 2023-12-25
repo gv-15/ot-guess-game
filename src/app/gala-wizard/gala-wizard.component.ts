@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { StepperComponent } from '../stepper/stepper.component';
 import { CdkStepperModule } from '@angular/cdk/stepper';
@@ -11,6 +11,9 @@ import {
 } from '@angular/forms';
 import { GalaStepLayoutComponent } from '../gala-step-layout/gala-step-layout.component';
 import { Concursante, CONCURSANTES } from '../shared/concursantes-data';
+import {NgxCaptureModule} from "ngx-capture";
+import { NgxCaptureService } from 'ngx-capture';
+import {tap} from "rxjs";
 
 interface PrediccionForm {
   name: FormControl<string>;
@@ -34,11 +37,13 @@ interface PrediccionForm {
     FormsModule,
     ReactiveFormsModule,
     GalaStepLayoutComponent,
+    NgxCaptureModule
   ],
   templateUrl: './gala-wizard.component.html',
   styleUrl: './gala-wizard.component.scss',
 })
 export default class GalaWizardComponent {
+  @ViewChild('screen', { static: true }) screen: any;
   galaForm = new FormGroup<PrediccionForm>({
     name: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
     numGala: new FormControl<number | undefined>(undefined, { nonNullable: true, validators: [Validators.required, Validators.min(0)] }),
@@ -73,4 +78,14 @@ export default class GalaWizardComponent {
   });
 
   concursantes: Concursante[] = CONCURSANTES;
+
+  constructor(private captureService: NgxCaptureService) { }
+
+  download(): void {
+  this.captureService.getImage(this.screen.nativeElement, true)
+    .pipe(
+      tap(img => {
+        this.captureService.downloadImage(img)
+      })
+    ).subscribe();  }
 }
