@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import GalaWizardComponent from "./gala-wizard.component";
 
-import { GalaWizardComponent } from './gala-wizard.component';
 
 describe('GalaWizardComponent', () => {
   let component: GalaWizardComponent;
