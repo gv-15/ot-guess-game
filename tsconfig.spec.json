@@ -4,11 +4,13 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": [
-      "jasmine"
-    ]
+      "jest",
+      "jsdom"
+    ],
   },
   "include": [
     "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/environments/*" // Add this to force the ts compiler to include environments otherwise eslint complains
   ]
 }
