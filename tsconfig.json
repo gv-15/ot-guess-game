@@ -1,6 +1,7 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
+  "include": ["src", "types"],
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -18,9 +19,7 @@
       "ES2022",
       "dom"
     ],
-    // Allow importing json files in the project such as disciplines.json and blockchain json interfaces
     "resolveJsonModule": true,
-    // Needed to import blockchain contract interfaces (eg. OrviumToken.json)
     "allowSyntheticDefaultImports": true,
     // Code quality checks
     //    "noUnusedParameters": true,

@@ -1,0 +1,135 @@
+<div class="!mt-28 sm:max-w-2xl md:m-auto w-full grid grid-cols-1">
+  <div class="flex flex-col items-center gap-10 justify-center">
+    <form [formGroup]="this.galaForm">
+      <app-stepper [showHeader]="true">
+        <cdk-step label="hideHeader">
+          <div class="mb-5 rounded-b-lg">
+            <h1
+              class="w-full text-3xl font-bold leading-none tracking-tight md:text-4xl bg-primary text-white p-4"
+            >
+              ¿Quién va a realizar la predicción?
+            </h1>
+            <p class="w-full leading-none tracking-tight bg-primary text-white p-4">
+              Sumérgete en la experiencia definitiva para adivinar y compartir la emoción de la gala
+              semanal.
+              <strong> Mucha suerte ! </strong>
+            </p>
+          </div>
+          <input
+            type="text"
+            class="input-ot mt-10"
+            placeholder="Tu nombre"
+            required
+            [formControl]="galaForm.controls.name"
+          />
+          <input
+            type="text"
+            class="input-ot mt-10"
+            placeholder="Número de gala de la predicción"
+            required
+            [formControl]="galaForm.controls.numGala"
+          />
+          <button
+            class="btn btn-primary w-full mt-20"
+            type="button"
+            [disabled]="galaForm.controls.name.invalid || galaForm.controls.numGala.invalid"
+            cdkStepperNext
+            >Continuar
+          </button>
+        </cdk-step>
+        <cdk-step label="Favoritos">
+          <app-gala-step-layout>
+            <ng-container title>¿Quiénes son los favoritos para esta semana?</ng-container>
+            <div>
+              <select class="select-ot mt-10" [formControl]="galaForm.controls.favoritoPersonal">
+                <option disabled selected value>Selecciona tu favorito de la semana</option>
+                @for (concursante of concursantes; track concursante.nombre) {
+                  <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >
+                }
+              </select>
+              <select class="select-ot mt-10" [formControl]="galaForm.controls.nomadaFav">
+                <option disabled selected value
+                  >Selecciona a quien crees que saldrá como nómada favorito</option
+                >
+                @for (concursante of concursantes; track concursante.nombre) {
+                  <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >
+                }
+              </select>
+            </div>
+            <ng-container button>
+              <button
+                class="btn btn-primary w-full"
+                type="button"
+                cdkStepperNext
+                [disabled]="!galaForm.controls.name.value"
+                >Continuar
+              </button>
+            </ng-container>
+          </app-gala-step-layout>
+        </cdk-step>
+        <cdk-step label="Nominados">
+          <app-gala-step-layout>
+            <ng-container title>¿Quiénes serán los nominados de esta semana?</ng-container>
+            <div>
+              <select class="select-ot mt-10" [formControl]="galaForm.controls.nominado1">
+                <option disabled selected value>Selecciona tu favorito de la semana</option>
+                @for (concursante of concursantes; track concursante.nombre) {
+                  <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >
+                }
+              </select>
+              <select class="select-ot mt-10" [formControl]="galaForm.controls.nominado2">
+                <option disabled selected value
+                  >Selecciona a quien crees que saldrá como nómada favorito</option
+                >
+                @for (concursante of concursantes; track concursante.nombre) {
+                  <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >
+                }
+              </select>
+              <select class="select-ot mt-10" [formControl]="galaForm.controls.nominadoProfe">
+                <option disabled selected value
+                  >Selecciona a quien crees que saldrá como nómada favorito</option
+                >
+                @for (concursante of concursantes; track concursante.nombre) {
+                  <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >
+                }
+              </select>
+              <select class="select-ot mt-10" [formControl]="galaForm.controls.nominadoCompis">
+                <option disabled selected value
+                  >Selecciona a quien crees que saldrá como nómada favorito</option
+                >
+                @for (concursante of concursantes; track concursante.nombre) {
+                  <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >
+                }
+              </select>
+            </div>
+            <ng-container button>
+              <button
+                class="btn btn-primary w-full"
+                type="button"
+                cdkStepperNext
+                [disabled]="!galaForm.controls.name.value"
+                >Continuar
+              </button>
+            </ng-container>
+          </app-gala-step-layout>
+        </cdk-step>
+        <cdk-step label="2">
+          <p>turirt </p>
+          <button class="btn btn-primary w-full" type="button" cdkStepperNext>Continue </button>
+        </cdk-step>
+      </app-stepper>
+    </form>
+  </div>
+</div>
