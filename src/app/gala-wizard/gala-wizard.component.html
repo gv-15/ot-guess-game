@@ -5,11 +5,11 @@
         <cdk-step label="hideHeader">
           <div class="mb-5 rounded-b-lg">
             <h1
-              class="w-full text-3xl font-bold leading-none tracking-tight md:text-4xl bg-primary text-white p-4"
+              class="w-full text-3xl font-bold leading-none tracking-tight md:text-4xl bg-primary text-white p-4 rounded-t-lg"
             >
               ¿Quién va a realizar la predicción?
             </h1>
-            <p class="w-full leading-none tracking-tight bg-primary text-white p-4">
+            <p class="w-full leading-none tracking-tight bg-primary text-white p-4 rounded-b-lg">
               Sumérgete en la experiencia definitiva para adivinar y compartir la emoción de la gala
               semanal.
               <strong> Mucha suerte ! </strong>
@@ -23,7 +23,7 @@
             [formControl]="galaForm.controls.name"
           />
           <input
-            type="text"
+            type="number"
             class="input-ot mt-10"
             placeholder="Número de gala de la predicción"
             required
@@ -34,7 +34,7 @@
             type="button"
             [disabled]="galaForm.controls.name.invalid || galaForm.controls.numGala.invalid"
             cdkStepperNext
-            >Continuar
+          >Continuar
           </button>
         </cdk-step>
         <cdk-step label="Favoritos">
@@ -45,17 +45,20 @@
                 <option disabled selected value>Selecciona tu favorito de la semana</option>
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option
                   >
                 }
               </select>
               <select class="select-ot mt-10" [formControl]="galaForm.controls.nomadaFav">
                 <option disabled selected value
-                  >Selecciona a quien crees que saldrá como nómada favorito</option
+                >Selecciona a quien crees que saldrá como nómada favorito
+                </option
                 >
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option
                   >
                 }
               </select>
@@ -65,8 +68,8 @@
                 class="btn btn-primary w-full"
                 type="button"
                 cdkStepperNext
-                [disabled]="!galaForm.controls.name.value"
-                >Continuar
+                [disabled]="!galaForm.controls.favoritoPersonal.value || !galaForm.controls.nomadaFav.value"
+              >Continuar
               </button>
             </ng-container>
           </app-gala-step-layout>
@@ -76,40 +79,47 @@
             <ng-container title>¿Quiénes serán los nominados de esta semana?</ng-container>
             <div>
               <select class="select-ot mt-10" [formControl]="galaForm.controls.nominado1">
-                <option disabled selected value>Selecciona tu favorito de la semana</option>
+                <option disabled selected value>Primer nominado</option>
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option
                   >
                 }
               </select>
               <select class="select-ot mt-10" [formControl]="galaForm.controls.nominado2">
                 <option disabled selected value
-                  >Selecciona a quien crees que saldrá como nómada favorito</option
+                >Segundo nominado
+                </option
                 >
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option
                   >
                 }
               </select>
               <select class="select-ot mt-10" [formControl]="galaForm.controls.nominadoProfe">
                 <option disabled selected value
-                  >Selecciona a quien crees que saldrá como nómada favorito</option
+                >Nominado salvado por los profesores
+                </option
                 >
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option
                   >
                 }
               </select>
               <select class="select-ot mt-10" [formControl]="galaForm.controls.nominadoCompis">
                 <option disabled selected value
-                  >Selecciona a quien crees que saldrá como nómada favorito</option
+                >Nominado salvado por los compañeros
+                </option
                 >
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                    >{{ concursante.nombre }} {{ concursante.apellidos }}</option
+                  >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option
                   >
                 }
               </select>
@@ -119,15 +129,26 @@
                 class="btn btn-primary w-full"
                 type="button"
                 cdkStepperNext
-                [disabled]="!galaForm.controls.name.value"
-                >Continuar
+                [disabled]="!galaForm.controls.nominado1.value || !galaForm.controls.nominado2.value || !galaForm.controls.nominadoProfe.value || !galaForm.controls.nominadoCompis.value"
+              >Continuar
               </button>
             </ng-container>
           </app-gala-step-layout>
         </cdk-step>
-        <cdk-step label="2">
-          <p>turirt </p>
-          <button class="btn btn-primary w-full" type="button" cdkStepperNext>Continue </button>
+        <cdk-step label="Resumen">
+          <app-gala-step-layout>
+            <ng-container title>Resumen de tu predicción</ng-container>
+            <div>
+            <p>aqui metemos el resumen bonito cuando este</p>
+            </div>
+            <ng-container button>
+              <button
+                class="btn btn-primary w-full"
+                type="button"
+              >Descargar resumen
+              </button>
+            </ng-container>
+          </app-gala-step-layout>
         </cdk-step>
       </app-stepper>
     </form>

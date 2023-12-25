@@ -14,7 +14,7 @@ import { Concursante, CONCURSANTES } from '../shared/concursantes-data';
 
 interface PrediccionForm {
   name: FormControl<string>;
-  numGala: FormControl<string>;
+  numGala: FormControl<number | undefined>;
   nomadaFav: FormControl<string>;
   expulsado: FormControl<string>;
   favoritoPersonal: FormControl<string>;
@@ -41,7 +41,7 @@ interface PrediccionForm {
 export default class GalaWizardComponent {
   galaForm = new FormGroup<PrediccionForm>({
     name: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-    numGala: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    numGala: new FormControl<number | undefined>(undefined, { nonNullable: true, validators: [Validators.required, Validators.min(0)] }),
     nomadaFav: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required],
