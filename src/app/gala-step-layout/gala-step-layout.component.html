@@ -1,0 +1,15 @@
+<div class="sm:max-w-2xl md:m-auto h-full grid grid-cols-1 justify-items-center p-4">
+  <div class="w-full pt-4 flex flex-col gap-8">
+    <h1 class="w-full text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-4xl">
+      <ng-content select="[title]"></ng-content>
+    </h1>
+    <div class="w-full">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="w-full flex flex-col gap-2">
+    <div class="relative bottom-0 left-0 m-auto w-full p-4 md:p-0 flex flex-col items-center gap-2">
+      <ng-content select="[button]"></ng-content>
+    </div>
+  </div>
+</div>

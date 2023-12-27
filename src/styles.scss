@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  @apply w-full h-[100dvh] m-0;
+}
+
+/* Classes for common components */
+
+.btn {
+  @apply px-5 py-2.5 focus:outline-none focus:ring-4 font-medium rounded-lg;
+}
+
+.btn-primary {
+  @apply text-white bg-primary focus:ring-primary-300 hover:bg-primary-600 disabled:bg-primary-200 text-2xl;
+}
+
+.btn-secondary {
+  @apply text-black bg-gray-100 border border-gray-300;
+}
+
+.btn-alternative {
+  @apply text-black underline underline-offset-8 decoration-1 decoration-gray-400;
+}
+
+.input-ot {
+  @apply block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary disabled:opacity-60 text-xl;
+}
+
+.select-ot {
+  @apply block w-full px-4 py-3 text-xl text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary;
+}

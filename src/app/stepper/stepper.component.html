@@ -1,0 +1,18 @@
+@if (showHeader && selected?.label !== 'hideHeader') {
+  <header class="flex flex-row w-full items-center gap-8 p-4">
+    <button type="button" (click)="previous()">
+      <fa-icon class="text-gray-500 text-xl" [icon]="faArrowLeft" />
+    </button>
+    <div class="grid grid-flow-col auto-cols-auto gap-2 w-full">
+      @for (step of steps; track step; let i = $index) {
+        <div
+          class="bg-gray-200 h-1 inline-block rounded"
+          [ngClass]="{ 'bg-primary': i <= selectedIndex }"
+        >
+        </div>
+      }
+    </div>
+  </header>
+}
+<!-- Content from the CdkStep is projected here -->
+<ng-container [ngTemplateOutlet]="selected?.content ? selected!.content : null" />
