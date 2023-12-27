@@ -1,16 +1,16 @@
 ----------------------------------|---------|----------|---------|---------|-------------------
 File                              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------------------|---------|----------|---------|---------|-------------------
-All files                         |      95 |      100 |      50 |   94.11 |                   
+All files                         |   95.23 |      100 |      50 |   94.44 |                   
  app                              |     100 |      100 |     100 |     100 |                   
   app.component.html              |     100 |      100 |     100 |     100 |                   
   app.component.ts                |     100 |      100 |     100 |     100 |                   
  app/gala-step-layout             |     100 |      100 |     100 |     100 |                   
   gala-step-layout.component.html |     100 |      100 |     100 |     100 |                   
   gala-step-layout.component.ts   |     100 |      100 |     100 |     100 |                   
- app/gala-wizard                  |   88.88 |      100 |   33.33 |   88.23 |                   
+ app/gala-wizard                  |      90 |      100 |   33.33 |   89.47 |                   
   gala-wizard.component.html      |     100 |      100 |     100 |     100 |                   
-  gala-wizard.component.ts        |   88.23 |      100 |   33.33 |    87.5 | 85-88             
+  gala-wizard.component.ts        |   89.47 |      100 |   33.33 |   88.88 | 92-96             
  app/shared                       |     100 |      100 |     100 |     100 |                   
   concursantes-data.ts            |     100 |      100 |     100 |     100 |                   
  app/stepper                      |     100 |      100 |     100 |     100 |                   

@@ -1,7 +1,5 @@
 @if (showHeader && selected?.label !== 'hideHeader') {
-  <header
-    class="flex flex-row w-full items-center gap-8 p-4"
-    >
+  <header class="flex flex-row w-full items-center gap-8 p-4">
     <button type="button" (click)="previous()">
       <fa-icon class="text-gray-500 text-xl" [icon]="faArrowLeft" />
     </button>
@@ -10,7 +8,7 @@
         <div
           class="bg-gray-200 h-1 inline-block rounded"
           [ngClass]="{ 'bg-primary': i <= selectedIndex }"
-          >
+        >
         </div>
       }
     </div>

@@ -34,7 +34,7 @@
             type="button"
             [disabled]="galaForm.controls.name.invalid || galaForm.controls.numGala.invalid"
             cdkStepperNext
-          >Continuar
+            >Continuar
           </button>
         </cdk-step>
         <cdk-step label="Favoritos">
@@ -45,21 +45,18 @@
                 <option disabled selected value>Selecciona tu favorito de la semana</option>
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                  >{{ concursante.nombre }} {{ concursante.apellidos }}
-                  </option
-                  >
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option>
                 }
               </select>
               <select class="select-ot mt-10" [formControl]="galaForm.controls.nomadaFav">
                 <option disabled selected value
-                >Selecciona a quien crees que saldrá como nómada favorito
-                </option
-                >
+                  >Selecciona a quien crees que saldrá como nómada favorito
+                </option>
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                  >{{ concursante.nombre }} {{ concursante.apellidos }}
-                  </option
-                  >
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option>
                 }
               </select>
             </div>
@@ -68,8 +65,34 @@
                 class="btn btn-primary w-full"
                 type="button"
                 cdkStepperNext
-                [disabled]="!galaForm.controls.favoritoPersonal.value || !galaForm.controls.nomadaFav.value"
-              >Continuar
+                [disabled]="
+                  !galaForm.controls.favoritoPersonal.value || !galaForm.controls.nomadaFav.value
+                "
+                >Continuar
+              </button>
+            </ng-container>
+          </app-gala-step-layout>
+        </cdk-step>
+        <cdk-step label="Expulsado">
+          <app-gala-step-layout>
+            <ng-container title>¿Quién sera el expulsado de esta semana?</ng-container>
+            <div>
+              <select class="select-ot mt-10" [formControl]="galaForm.controls.expulsado">
+                <option disabled selected value>Selecciona el expulsado de esta semana</option>
+                @for (concursante of concursantes; track concursante.nombre) {
+                  <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option>
+                }
+              </select>
+            </div>
+            <ng-container button>
+              <button
+                class="btn btn-primary w-full"
+                type="button"
+                cdkStepperNext
+                [disabled]="!galaForm.controls.expulsado.value"
+                >Continuar
               </button>
             </ng-container>
           </app-gala-step-layout>
@@ -82,45 +105,32 @@
                 <option disabled selected value>Primer nominado</option>
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                  >{{ concursante.nombre }} {{ concursante.apellidos }}
-                  </option
-                  >
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option>
                 }
               </select>
               <select class="select-ot mt-10" [formControl]="galaForm.controls.nominado2">
-                <option disabled selected value
-                >Segundo nominado
-                </option
-                >
+                <option disabled selected value>Segundo nominado </option>
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                  >{{ concursante.nombre }} {{ concursante.apellidos }}
-                  </option
-                  >
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option>
                 }
               </select>
               <select class="select-ot mt-10" [formControl]="galaForm.controls.nominadoProfe">
-                <option disabled selected value
-                >Nominado salvado por los profesores
-                </option
-                >
+                <option disabled selected value>Nominado salvado por los profesores </option>
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                  >{{ concursante.nombre }} {{ concursante.apellidos }}
-                  </option
-                  >
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option>
                 }
               </select>
               <select class="select-ot mt-10" [formControl]="galaForm.controls.nominadoCompis">
-                <option disabled selected value
-                >Nominado salvado por los compañeros
-                </option
-                >
+                <option disabled selected value>Nominado salvado por los compañeros </option>
                 @for (concursante of concursantes; track concursante.nombre) {
                   <option value="{{ concursante.nombre }} {{ concursante.apellidos }}"
-                  >{{ concursante.nombre }} {{ concursante.apellidos }}
-                  </option
-                  >
+                    >{{ concursante.nombre }} {{ concursante.apellidos }}
+                  </option>
                 }
               </select>
             </div>
@@ -129,8 +139,13 @@
                 class="btn btn-primary w-full"
                 type="button"
                 cdkStepperNext
-                [disabled]="!galaForm.controls.nominado1.value || !galaForm.controls.nominado2.value || !galaForm.controls.nominadoProfe.value || !galaForm.controls.nominadoCompis.value"
-              >Continuar
+                [disabled]="
+                  !galaForm.controls.nominado1.value ||
+                  !galaForm.controls.nominado2.value ||
+                  !galaForm.controls.nominadoProfe.value ||
+                  !galaForm.controls.nominadoCompis.value
+                "
+                >Continuar
               </button>
             </ng-container>
           </app-gala-step-layout>
@@ -139,19 +154,72 @@
           <app-gala-step-layout>
             <ng-container title>Resumen de tu predicción</ng-container>
             <div #screen>
+              <br />
               <div class="m-10">
-                <h1>Hey!</h1>
-                <p>some content</p>
-                <h1>Hey!</h1>
-                <br>
+                <div
+                  class="rounded-xl shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out cursor-pointer"
+                >
+                  <img class="w-full rounded-t-xl h-36 object-fill" [src]="'assets/logo.jpg'" />
+                  <div class="p-6">
+                    <div class="flex flex-row">
+                      <div class="uppercase text-xs text-yellow-700 px-2 py-1 rounded-xl">
+                        Gala {{ galaForm.controls.numGala.value }}
+                      </div>
+                    </div>
+                    <h2 class="text-2xl mt-2 font-bold"> Favoritos </h2>
+                    <div class="flex flex-col gap-1">
+                      <span class="mt-2 mr-1 text-gray-600">
+                        Mi favorito:
+                        <span class="text-black">{{
+                          galaForm.controls.favoritoPersonal.value
+                        }}</span>
+                      </span>
+                      <span class="mt-2 mr-1 text-gray-600">
+                        Nomada favorito:
+                        <span class="text-black">{{ galaForm.controls.nomadaFav.value }}</span>
+                      </span>
+                    </div>
+                    <h2 class="text-2xl mt-2 font-bold"> Expulsado </h2>
+                    <div class="flex flex-col gap-1">
+                      <span class="mt-2 mr-1 text-gray-600">
+                        Expulsado:
+                        <span class="text-black">{{ galaForm.controls.expulsado.value }}</span>
+                      </span>
+                    </div>
+                    <h2 class="text-2xl mt-2 font-bold"> Nominados </h2>
+                    <div class="flex flex-col gap-1">
+                      <span class="mt-2 mr-1 text-gray-600">
+                        Primer nominado:
+                        <span class="text-black">{{ galaForm.controls.nominado1.value }}</span>
+                      </span>
+                      <span class="mt-2 mr-1 text-gray-600">
+                        Segundo nominado:
+                        <span class="text-black">{{ galaForm.controls.nominado2.value }}</span>
+                      </span>
+                      <span class="mt-2 mr-1 text-gray-600">
+                        Nominado salvado profesores:
+                        <span class="text-black">{{ galaForm.controls.nominadoProfe.value }}</span>
+                      </span>
+                      <span class="mt-2 mr-1 text-gray-600">
+                        Nominado salvado compañeros:
+                        <span class="text-black">{{ galaForm.controls.nominadoCompis.value }}</span>
+                      </span>
+                    </div>
+                    <div class="flex flex-row mt-4 items-center">
+                      <div class="font-bold mx-2"
+                        >Prediccion de {{ galaForm.controls.name.value }}</div
+                      >
+                      <span class="mx-2">-</span>
+                      <div class="text-gray-400">{{ fechaActual | date: 'M/d/yyyy' }}</div>
+                    </div>
+                  </div>
+                </div>
+                <br />
               </div>
             </div>
             <ng-container button>
-              <button
-                class="btn btn-primary w-full"
-                type="button"
-                (click)="download()"
-              >Descargar resumen
+              <button class="btn btn-primary w-full" type="button" (click)="download()"
+                >Descargar resumen
               </button>
             </ng-container>
           </app-gala-step-layout>
